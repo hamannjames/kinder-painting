@@ -1,0 +1,138 @@
+<script>
+    import { fly, slide } from "svelte/transition";
+    import white_house_big from "$lib/images/white_house_big.png"
+    import yellow_house_with_deck_from_front from "$lib/images/yellow_house_with_deck_from_front.png";
+    import house_with_beams from "$lib/images/house_with_beams.png"
+    import commercial_spray_paint from "$lib/images/commercial_spray_paint.png"
+    import brushIcon from "$lib/icons/iconmonstr-paintbrush-3.svg"
+    import wrenchIcon from "$lib/icons/iconmonstr-wrench-24.svg"
+    import { onMount } from "svelte";
+    import Button from "$lib/components/Button.svelte";
+    import BrushBg from "$lib/components/BrushBg.svelte";
+    import BrushSeparator from "$lib/components/BrushSeparator.svelte";
+    import { intersecting } from "$lib/actions/intersecting";
+    import { intersections } from "$lib/stores/intersections";
+    import RevealContainer from "$lib/components/RevealContainer.svelte";
+    import Testimonials from "./Testimonials.svelte";
+    import RevealingList from "$lib/components/RevealingList.svelte";
+
+    const images = [white_house_big,yellow_house_with_deck_from_front,house_with_beams,commercial_spray_paint]
+    let image = 0;
+
+    onMount(() => {
+        const interval = setInterval(() => {
+            image = image === images.length - 1 ? 0 : image + 1;
+        }, 4000)
+
+        return () => {
+            clearInterval(interval);
+        }
+    })
+    
+</script>
+
+<section class="w-full flex bg-icicle-100 px-8 py-12">
+    <div class="flex flex-col md:flex-row w-full max-w-vw-max mx-auto gap-4">
+        <div class="md:basis-3/5 relative h-72 md:h-screen hero p-2">
+            {#key image}
+                <figure class="w-full absolute overflow-hidden h-full rounded-md"
+                    transition:fly={{
+                        x: '-50vw'
+                    }}
+                >
+                    <img src="{images[image]}" alt="painting" class="absolute top-1/2 left-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 h-full" style="max-width: inherit" />
+                </figure>
+            {/key}
+        </div>
+        <div class="md:basis-2/5 p-8 flex flex-col justify-center">
+            <h2 class="text-4xl text-grey-900 font-mont">Interior, exterior, commercial and residential painting service</h2>
+            <div class="mt-4">
+                <Button>Get a Free Quote</Button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="px-8 py-12">
+    <p class="text-2xl text-center max-w-vw-limit mx-auto">
+        Kinder Painting has been serving Western Washington for over 20 years, providing unparalleled customer service.
+    </p>
+</section>
+
+<BrushSeparator />
+
+<section class="px-8 py-12">
+    <h2 class="text-xl text-center font-bold">What services do we offer?</h2>
+    <div class="flex flex-col justify-center md:flex-row mt-8 justify-center gap-12 md:gap-24">
+        <RevealContainer theTransition={fly} options={{duration: 500, x: '-50vw'}}>
+            <div>
+                <h3 class="text-lg text-center font-bold">We paint of course!</h3>
+                <RevealingList items={[
+                    'Walls',
+                    'Ceilings',
+                    'Wood Trim',
+                    'Garages',
+                    'Sheds',
+                    'Decks (staining, painting)',
+                    'New Construction',
+                    'Interiors',
+                    'Exteriors'
+                ]} options={{x: '-50vw'}} let:item>
+                    <img src="{brushIcon}" class="inline-block w-6"/> {item}
+                </RevealingList>
+            </div>
+        </RevealContainer>
+        <RevealContainer theTransition={fly} options={{duration: 500, x: '50vw'}}>
+            <div>
+                <h3 class="text-lg text-center font-bold">And we offer other contracting services</h3>
+                <RevealingList 
+                    items={[
+                        'Pressure Washing',
+                        'Wallpaper Removal',
+                        'Siding Repair',
+                        'Dryrot Repair',
+                        'Sheetrock Repair',
+                        'Trim Installation',
+                        'Color Consultation',
+                        'General Contracting'
+                    ]}
+                    let:item
+                >
+                    <img src="{wrenchIcon}" class="inline-block w-6"/> {item}
+                </RevealingList>
+            </div>
+        </RevealContainer>
+    </div>
+</section>
+
+<Testimonials />
+
+<section class="px-8 py-12 text-center">
+    <h2 class="text-lg text-center font-bold">Get a hold of us for a free quote!</h2>
+    <Button className="mt-8">Get Your Free Quote</Button>
+</section>
+
+<style>
+    /*
+    @keyframes grow {
+        from {transform: translate(0, 0)}
+        to {transform: translate(-10px, -5px)}
+    }
+    */
+
+    @keyframes grow {
+        from {transform: scale(1)}
+        to {transform: scale(1.015)}
+    }
+
+    figure {
+        animation-name: grow;
+        animation-duration: 4s;
+        animation-timing-function: linear;
+        box-shadow: rgba(0, 0, 0, 0.55) 0px 25px 15px -10px;
+    }
+
+    .hero {
+        max-height: 500px;
+    }
+</style>
