@@ -1,6 +1,4 @@
 <script>
-    export const prerender = true;
-    
     import { fade, fly, slide } from "svelte/transition";
     import "../app.css";
     import Header from "./Header.svelte";
