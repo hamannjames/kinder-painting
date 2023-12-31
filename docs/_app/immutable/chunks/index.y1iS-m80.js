@@ -1,3 +1,0 @@
-import{k as f,l as x}from"./scheduler._-LoI_4K.js";function U(t){return t?.length!==void 0?t:Array.from(t)}function C(t){const n=t-1;return n*n*n+1}function V(t,{delay:n=0,duration:s=400,easing:o=x}={}){const c=+getComputedStyle(t).opacity;return{delay:n,duration:s,easing:o,css:e=>`opacity: ${e*c}`}}function b(t,{delay:n=0,duration:s=400,easing:o=C,x:c=0,y:e=0,opacity:i=0}={}){const a=getComputedStyle(t),r=+a.opacity,y=a.transform==="none"?"":a.transform,p=r*(1-i),[l,m]=f(c),[d,$]=f(e);return{delay:n,duration:s,easing:o,css:(u,g)=>`
-			transform: ${y} translate(${(1-u)*l}${m}, ${(1-u)*d}${$});
-			opacity: ${r-p*g}`}}export{V as a,U as e,b as f};

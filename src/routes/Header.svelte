@@ -7,6 +7,7 @@
   import { fade, fly } from "svelte/transition";
   import BrushBg from "$lib/components/BrushBg.svelte";
   import { onMount } from "svelte";
+  import { base } from "$app/paths";
 
   let emailPopup = false;
   let node;
@@ -30,7 +31,7 @@
 }}>
     <div class="flex items-center justify-between mx-auto max-w-vw-max gap-4">
         <div class="relative px-4 py-2 logo before:bg-ramie-400">
-            <a href="/">
+            <a href="{base}">
                 <h1 class="cursor-pointer text-white text-center font-mont text-2xl italic font-bold relative shadow-1">KINDER PAINTING</h1>
             </a>
     
@@ -96,7 +97,7 @@
     
         <nav class="hidden lg:block">
             <ul class="flex text-base text-white items-center gap-4">
-                <li><a href="/about-us">About Us</a></li>
+                <li><a href="{base}/about-us">About Us</a></li>
                 <li>
                     <button class="block" on:click={() => emailPopup = true}>
                         <PhoneIcon width={32} height={32} fill="rgb(203 193 163)" />
