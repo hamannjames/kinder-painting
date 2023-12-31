@@ -15,6 +15,8 @@
     import RevealContainer from "$lib/components/RevealContainer.svelte";
     import Testimonials from "./Testimonials.svelte";
     import RevealingList from "$lib/components/RevealingList.svelte";
+  import GetQuoteButton from "$lib/components/GetQuoteButton.svelte";
+  import GetAQuoteSection from "./GetAQuoteSection.svelte";
 
     const images = [white_house_big,yellow_house_with_deck_from_front,house_with_beams,commercial_spray_paint]
     let image = 0;
@@ -33,7 +35,7 @@
 
 <section class="w-full flex bg-icicle-100 px-8 py-12">
     <div class="flex flex-col md:flex-row w-full max-w-vw-max mx-auto gap-4">
-        <div class="md:basis-3/5 relative h-72 md:h-screen hero p-2">
+        <div class="md:basis-3/5 relative h-72 md:h-screen hero md:p-2">
             {#key image}
                 <figure class="w-full absolute overflow-hidden h-full rounded-md"
                     transition:fly={{
@@ -44,17 +46,17 @@
                 </figure>
             {/key}
         </div>
-        <div class="md:basis-2/5 p-8 flex flex-col justify-center">
+        <div class="md:basis-2/5 mt-4 md:mt-0 md:p-8 flex flex-col justify-center">
             <h2 class="text-4xl text-grey-900 font-mont">Interior, exterior, commercial and residential painting service</h2>
             <div class="mt-4">
-                <Button>Get a Free Quote</Button>
+                <GetQuoteButton on:show-email-popup />
             </div>
         </div>
     </div>
 </section>
 
 <section class="px-8 py-12">
-    <p class="text-2xl text-center max-w-vw-limit mx-auto">
+    <p class="text-2xl max-w-vw-limit mx-auto text-left md:text-center">
         Kinder Painting has been serving Western Washington for over 20 years, providing unparalleled customer service.
     </p>
 </section>
@@ -62,11 +64,11 @@
 <BrushSeparator />
 
 <section class="px-8 py-12">
-    <h2 class="text-xl text-center font-bold">What services do we offer?</h2>
+    <h2 class="text-xl md:text-center font-bold font-mont">What services do we offer?</h2>
     <div class="flex flex-col justify-center md:flex-row mt-8 justify-center gap-12 md:gap-24">
         <RevealContainer theTransition={fly} options={{duration: 500, x: '-50vw'}}>
             <div>
-                <h3 class="text-lg text-center font-bold">We paint of course!</h3>
+                <h3 class="text-lg md:text-center font-bold font-mont mb-2">We paint of course!</h3>
                 <RevealingList items={[
                     'Walls',
                     'Ceilings',
@@ -84,7 +86,7 @@
         </RevealContainer>
         <RevealContainer theTransition={fly} options={{duration: 500, x: '50vw'}}>
             <div>
-                <h3 class="text-lg text-center font-bold">And we offer other contracting services</h3>
+                <h3 class="text-lg md:text-center font-bold mb-2">And we offer other contracting services</h3>
                 <RevealingList 
                     items={[
                         'Pressure Washing',
@@ -107,10 +109,7 @@
 
 <Testimonials />
 
-<section class="px-8 py-12 text-center">
-    <h2 class="text-lg text-center font-bold">Get a hold of us for a free quote!</h2>
-    <Button className="mt-8">Get Your Free Quote</Button>
-</section>
+<GetAQuoteSection />
 
 <style>
     /*

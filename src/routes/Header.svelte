@@ -3,17 +3,36 @@
   import PhoneIcon from "$lib/icons/PhoneIcon.svelte";
   import fb_icon from "$lib/icons/Facebook_Logo_Primary.png";
   import EmailIcon from "$lib/icons/EmailIcon.svelte";
-  import { fly } from "svelte/transition";
+  import igIcon from "$lib/icons/Instagram_Glyph_Gradient.png";
+  import { fade, fly } from "svelte/transition";
+  import BrushBg from "$lib/components/BrushBg.svelte";
+  import { onMount } from "svelte";
+
+  let emailPopup = false;
+  let node;
+  let mobileMenu = false;
+
+  onMount(() => {
+    const reveal = () => emailPopup = true;
+
+    window.addEventListener('show-email-popup', reveal);
+
+    return () => {
+        window.removeEventListener('show-email-popup', reveal);
+    }
+  })
 </script>
 
-<header class="w-full bg-naval-700 px-6 py-4 fixed z-20" in:fly|global={{
+<header bind:this={node} class="w-full bg-naval-700 px-6 py-4 fixed z-20" in:fly|global={{
     duration: 200,
     y: '-100vh',
     opacity: 1
 }}>
     <div class="flex items-center justify-between mx-auto max-w-vw-max gap-4">
         <div class="relative px-4 py-2 logo before:bg-ramie-400">
-            <h1 class="text-white text-center font-mont text-2xl italic font-bold relative shadow-1">KINDER PAINTING</h1>
+            <a href="/">
+                <h1 class="cursor-pointer text-white text-center font-mont text-2xl italic font-bold relative shadow-1">KINDER PAINTING</h1>
+            </a>
     
             <!-- create svg inline with clipPath and animation -->
             <!-- do not hide SVG with display: none; it will disable anim/clipping -->
@@ -75,16 +94,70 @@
     
         <p class="hidden sm:block text-base text-white italic">Serving Longview and Western Washington</p>
     
-        <nav>
+        <nav class="hidden lg:block">
             <ul class="flex text-base text-white items-center gap-4">
-                <li><PhoneIcon width={32} height={32} fill="rgb(203 193 163)" /></li>
-                <li><EmailIcon width={32} height={32} fill="rgb(203 193 163)" /></li>
-                <li><img src={fb_icon} alt="Follow us on Facebook" class="w-8 max-w-max" /></li>
+                <li><a href="/about-us">About Us</a></li>
+                <li>
+                    <button class="block" on:click={() => emailPopup = true}>
+                        <PhoneIcon width={32} height={32} fill="rgb(203 193 163)" />
+                    </button>
+                </li>
+                <li>
+                    <button class="block" on:click={() => emailPopup = true}>
+                        <EmailIcon width={32} height={32} fill="rgb(203 193 163)" />
+                    </button>
+                </li>
+                <li><a href="https://www.facebook.com/p/Kinder-Painting-100054254721438/"><img src={fb_icon} alt="Follow us on Facebook" class="w-8 max-w-max" /></a></li>
+                <li><a href="https://www.instagram.com/kinderpaintingpnw"><img src={igIcon} alt="Follow us on Instagram" class="w-8 max-w-max" /></a></li>
             </ul>
         </nav>
+        <button class="lg:hidden text-white" on:click={() => mobileMenu = true}>
+            Menu
+        </button>
+        {#if mobileMenu}
+        <nav class="lg:hidden fixed p-8 bg-naval-800 z-50 h-screen top-0 right-0" transition:fly={{x: '10vw'}}>
+            <ul class="flex flex-col text-base text-white gap-4">
+                <li class="">
+                    <button on:click={() => mobileMenu = false} class="text-sm text-right inline">
+                        Close
+                    </button>
+                </li>
+                <li class="text-right">About Us</li>
+                <li class="text-right">
+                    <button class="block" on:click={() => emailPopup = true}>
+                        <PhoneIcon width={32} height={32} fill="rgb(203 193 163)" />
+                    </button>
+                </li>
+                <li class="text-right">
+                    <button class="block" on:click={() => emailPopup = true}>
+                        <EmailIcon width={32} height={32} fill="rgb(203 193 163)" />
+                    </button>
+                </li>
+                <li class="text-right"><a href="https://www.facebook.com/p/Kinder-Painting-100054254721438/"><img src={fb_icon} alt="Follow us on Facebook" class="w-8 max-w-max" /></a></li>
+                <li class="text-right"><a href="https://www.instagram.com/kinderpaintingpnw"><img src={igIcon} alt="Follow us on Instagram" class="w-8 max-w-max" /></a></li>
+            </ul>
+        </nav>
+        {/if}
     </div>
     <p class="text-center sm:hidden text-base text-white italic mt-2">Serving Longview and Western Washington</p>
 </header>
+
+{#if emailPopup}
+<div class="fixed w-screen h-screen flex items-center justify-center z-50 bg-grey-900/90 text-white" transition:fade>
+    <div class="bg-roycroft-700 p-8 rounded-md relative">
+        <div class="relative text-lg text-center flex flex-col gap-6">
+            <p>If you have questions or want a quote, email us at <a class="underline text-icicle-300 hover:text-icicle-100" href="mailto:kinderpainting@gmail.com">kinderpainting@gmail.com</a></p>
+            <p>
+                You can also call us at <a class="underline text-icicle-300 hover:text-icicle-100" href="tel:360-423-6633">(360) 423-6633</a>
+            </p>
+            <p>We look forward to hearing from you!</p>
+            <button class="cursor-pointer" on:click={() => emailPopup = false}>
+                Back
+            </button>
+        </div>
+    </div>
+</div>
+{/if}
 
 <style>
     .logo {

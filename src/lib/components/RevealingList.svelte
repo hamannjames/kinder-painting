@@ -33,7 +33,7 @@
 
 <div bind:this={node} use:intersecting={{id}}>
 {#if show}
-    <ul class="text-base text-center italic">
+    <ul class="text-base md:text-center italic">
     {#each items as item, i}
         <li transition:theTransition|global={{delay: i * 100 + 100, ...options}}>
             <slot {item} />

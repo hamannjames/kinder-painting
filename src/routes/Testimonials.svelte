@@ -13,8 +13,8 @@
             author: 'Sandy Parrish, Satisfied Customer'
         },
         {
-            content: 'We wanted to thank you again for getting a very big job done at our house. We have come away with a very positive experience thanks to you. You were great to work with, and we love the outcome of our newly painted house.',
-            author: 'Mike and Shawn Shafer, VERY Satisfied Customer'
+            content: 'Thank you again for getting a very big job done at our house. You were great to work with, and we love the outcome of our newly painted house.',
+            author: 'Mike and Shawn Shafer, VERY Satisfied Customers'
         }
     ];
 
@@ -31,15 +31,21 @@
     })
 </script>
 
-<section class="px-8 py-12 bg-icicle-200 text-center">
-    <h2 class="text-lg text-center mb-8 font-bold">What are People Saying About Kinder Painting?</h2>
+<section class="px-8 py-12 bg-icicle-200">
+    <h2 class="text-lg md:text-center mb-8 font-bold">What are People Saying About Kinder Painting?</h2>
     <div class="brush relative">
     {#key pointer}
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center" transition:fly={{
-            x: '50vw',
-        }}>
+        <div 
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center" 
+            in:fly={{
+                x: '50vw'
+            }}
+            out:fly={{
+                x: '-50vw'
+            }}
+        >
             <BrushBg className="max-w-vw-limit text-center before:bg-ramie-400 flex items-center justify-center">
-                <p class="relative p-24 text-grey-700 font-bold text-base font-mont">
+                <p class="relative p-12 sm:p-24 text-grey-700 font-bold text-base font-mont">
                     {testimonials[pointer].content}<br>
                     –{testimonials[pointer].author}
                 </p>
@@ -47,7 +53,7 @@
         </div>
     {/key}
     </div>
-    <h2 class="text-lg text-center mt-8">
+    <h2 class="text-lg text-center mt-8 font-bold">
         Good Things!
     </h2>
 </section>
@@ -71,6 +77,6 @@
 
     .brush {
         animation: wobble 4s linear infinite;
-        height: clamp(20rem, 30rem - 10vw, 55rem);
+        height: clamp(10rem, 30rem - 10vw, 55rem);
     }
 </style>

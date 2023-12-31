@@ -198,9 +198,9 @@
     <polyline points={followPoints.reduce((c, p) => `${c}${p.x},${p.y} `,'')} stroke="{fills[fillPointer]}" fill="transparent" stroke-width="15" stroke-linejoin="bevel" stroke-linecap="round" />
 </svg>
 {/if}
-<div class="text-grey-900 cursor-paintbrush overflow-x-hidden" on:contextmenu={upListener} on:mousedown={downListener} on:mousemove={moveListener} on:mouseup={upListener} role="presentation">
-    <Header />
-    <div class="app min-h-screen flex flex-col pt-40 sm:pt-20">
+<div class="text-grey-900 flex flex-col justify-between min-h-screen cursor-paintbrush overflow-x-hidden" on:contextmenu={upListener} on:mousedown={downListener} on:mousemove={moveListener} on:mouseup={upListener} role="presentation">
+    <Header on:show-email-popup />
+    <div class="app flex flex-col pt-40 sm:pt-20">
         <main class="flex-1">
             <slot />
         </main>
@@ -212,7 +212,7 @@
         cursor: auto;
     }
 
-    a {
+    a, button {
         cursor: pointer;
     }
 </style>
