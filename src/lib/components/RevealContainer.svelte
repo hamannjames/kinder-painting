@@ -6,6 +6,7 @@
 
     export let theTransition = fade;
     export let options = {};
+    export let className = '';
 
     let show = false;
     let node;
@@ -30,7 +31,7 @@
     })
 </script>
 
-<div bind:this={node} use:intersecting={{id: intersectingId}}>
+<div bind:this={node} use:intersecting={{id: intersectingId}} class="{className}">
 {#if show}
     <div transition:theTransition={options}>
         <slot />

@@ -4,8 +4,6 @@
     import yellow_house_with_deck_from_front from "$lib/images/yellow_house_with_deck_from_front.png";
     import house_with_beams from "$lib/images/house_with_beams.png"
     import commercial_spray_paint from "$lib/images/commercial_spray_paint.png"
-    import brushIcon from "$lib/icons/iconmonstr-paintbrush-3.svg"
-    import wrenchIcon from "$lib/icons/iconmonstr-wrench-24.svg"
     import { onMount } from "svelte";
     import Button from "$lib/components/Button.svelte";
     import BrushBg from "$lib/components/BrushBg.svelte";
@@ -17,6 +15,7 @@
     import RevealingList from "$lib/components/RevealingList.svelte";
   import GetQuoteButton from "$lib/components/GetQuoteButton.svelte";
   import GetAQuoteSection from "./GetAQuoteSection.svelte";
+  import WhatWeDo from "./WhatWeDo.svelte";
 
     const images = [white_house_big,yellow_house_with_deck_from_front,house_with_beams,commercial_spray_paint]
     let image = 0;
@@ -63,49 +62,7 @@
 
 <BrushSeparator />
 
-<section class="px-8 py-12">
-    <h2 class="text-xl md:text-center font-bold font-mont">What services do we offer?</h2>
-    <div class="flex flex-col justify-center md:flex-row mt-8 justify-center gap-12 md:gap-24">
-        <RevealContainer theTransition={fly} options={{duration: 500, x: '-50vw'}}>
-            <div>
-                <h3 class="text-lg md:text-center font-bold font-mont mb-2">We paint of course!</h3>
-                <RevealingList items={[
-                    'Walls',
-                    'Ceilings',
-                    'Wood Trim',
-                    'Garages',
-                    'Sheds',
-                    'Decks (staining, painting)',
-                    'New Construction',
-                    'Interiors',
-                    'Exteriors'
-                ]} options={{x: '-50vw'}} let:item>
-                    <img src="{brushIcon}" class="inline-block w-6"/> {item}
-                </RevealingList>
-            </div>
-        </RevealContainer>
-        <RevealContainer theTransition={fly} options={{duration: 500, x: '50vw'}}>
-            <div>
-                <h3 class="text-lg md:text-center font-bold mb-2">And we offer other contracting services</h3>
-                <RevealingList 
-                    items={[
-                        'Pressure Washing',
-                        'Wallpaper Removal',
-                        'Siding Repair',
-                        'Dryrot Repair',
-                        'Sheetrock Repair',
-                        'Trim Installation',
-                        'Color Consultation',
-                        'General Contracting'
-                    ]}
-                    let:item
-                >
-                    <img src="{wrenchIcon}" class="inline-block w-6"/> {item}
-                </RevealingList>
-            </div>
-        </RevealContainer>
-    </div>
-</section>
+<WhatWeDo />
 
 <Testimonials />
 

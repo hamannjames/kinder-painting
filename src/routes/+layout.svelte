@@ -190,15 +190,15 @@
 <div out:fade class="fixed z-50 bg-black pointer-events-none" style={`background-color: #000000; top: ${boxStart.y}px; left: ${boxStart.x}px; width: ${boxEnd.x - boxStart.x}px; height: ${boxEnd.y - boxStart.y}px; clip-path: path('M 0 0 C ${(boxEnd.x - boxStart.x) / 4} ${(boxEnd.x - boxStart.x) / 4}, ${mouseX + 10} ${mouseY + 10}, ${mouseX} ${mouseY}')`}></div>
 -->
 <svg out:fade class="fixed w-screen z-50 h-screen pointer-events-none">
-    <polyline points={drawPoints} stroke="{fills[fillPointer]}" fill="transparent" stroke-width="15" stroke-linejoin="bevel" stroke-linecap="round" />
+    <polyline points={drawPoints} stroke="{fills[fillPointer]}" stroke-opacity="0.8" fill="transparent" stroke-width="15" stroke-linejoin="bevel" stroke-linecap="round" />
 </svg>
 {/if}
 {#if followPoints.length > 0}
 <svg out:fade class="fixed w-screen z-50 h-screen pointer-events-none">
-    <polyline points={followPoints.reduce((c, p) => `${c}${p.x},${p.y} `,'')} stroke="{fills[fillPointer]}" fill="transparent" stroke-width="15" stroke-linejoin="bevel" stroke-linecap="round" />
+    <polyline points={followPoints.reduce((c, p) => `${c}${p.x},${p.y} `,'')} stroke="{fills[fillPointer]}" fill="transparent" stroke-width="15" stroke-linejoin="bevel" stroke-linecap="round" stroke-opacity="0.8" />
 </svg>
 {/if}
-<div class="text-grey-900 flex flex-col justify-between min-h-screen cursor-paintbrush overflow-x-hidden" on:contextmenu={upListener} on:mousedown={downListener} on:mousemove={moveListener} on:mouseup={upListener} role="presentation">
+<div class="text-grey-900 flex flex-col justify-between min-h-screen cursor-paintbrush overflow-x-hidden" on:contextmenu={upListener} on:mousedown={downListener} on:mousemove={moveListener} on:mouseup={upListener} on:mouseleave={upListener} role="presentation">
     <Header on:show-email-popup />
     <div class="app flex flex-col pt-40 sm:pt-20">
         <main class="flex-1">

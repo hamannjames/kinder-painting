@@ -4,12 +4,18 @@
     import { onMount } from "svelte";
     import { fade, fly } from "svelte/transition";
 
+    export let className = '';
+    export let itemClassName = '';
+    export let containerClassName='';
     export let theTransition = fly;
-    export let options = {
-        x: '50vw',
-        duration: 300
-    }
+    export let options = {};
     export let items = [];
+    export let spacing = 100;
+    export let animate = true;
+
+    if (!animate) {
+        spacing = 0;
+    }
 
     let show = false;
     let id;
@@ -31,11 +37,11 @@
     })
 </script>
 
-<div bind:this={node} use:intersecting={{id}}>
+<div bind:this={node} use:intersecting={{id}} class="{containerClassName}">
 {#if show}
-    <ul class="text-base md:text-center italic">
+    <ul class="text-base italic {className}">
     {#each items as item, i}
-        <li transition:theTransition|global={{delay: i * 100 + 100, ...options}}>
+        <li transition:theTransition|global={{x: '50vw', duration: 300, delay: i * spacing + 100, ...options}} class="{itemClassName}">
             <slot {item} />
         </li>
     {/each}
