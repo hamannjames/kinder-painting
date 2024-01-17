@@ -5,9 +5,9 @@
   import EmailIcon from "$lib/icons/EmailIcon.svelte";
   import igIcon from "$lib/icons/Instagram_Glyph_Gradient.png";
   import { fade, fly } from "svelte/transition";
-  import BrushBg from "$lib/components/BrushBg.svelte";
   import { onMount } from "svelte";
   import { base } from "$app/paths";
+  import JotFormPopup from "./JotFormPopup.svelte";
 
   let emailPopup = false;
   let node;
@@ -31,7 +31,7 @@
 }}>
     <div class="flex items-center justify-between mx-auto max-w-vw-max gap-4">
         <div class="relative px-4 py-2 logo before:bg-ramie-400">
-            <a href="{base}">
+            <a href="{base}/">
                 <h1 class="cursor-pointer text-white text-center font-mont text-2xl italic font-bold relative shadow-1">KINDER PAINTING</h1>
             </a>
     
@@ -144,20 +144,7 @@
 </header>
 
 {#if emailPopup}
-<div class="fixed w-screen h-screen flex items-center justify-center z-50 bg-white/90 text-white p-4" transition:fade={{duration: 300}}>
-    <div class="bg-naval-700 p-8 rounded-md relative">
-        <div class="relative text-lg text-center flex flex-col gap-6">
-            <p>If you have questions or want a quote, email us at <a class="underline text-ramie-300 hover:text-icicle-100" href="mailto:kinderpainting@gmail.com">kinderpainting@gmail.com</a></p>
-            <p>
-                You can also call us at <a class="underline text-ramie-300 hover:text-icicle-100" href="tel:360-423-6633">(360) 423-6633</a>
-            </p>
-            <p>We look forward to hearing from you!</p>
-            <button class="cursor-pointer absolute -right-8 -top-20 text-grey-900" on:click={() => emailPopup = false}>
-                Close
-            </button>
-        </div>
-    </div>
-</div>
+<JotFormPopup close={() => emailPopup = false} />
 {/if}
 
 <style>

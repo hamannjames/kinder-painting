@@ -6,15 +6,27 @@
     let testimonials = [
         {
             content: 'Thank you for the good work! Your attention to detail is exemplary. We think it looks great.',
-            author: 'Michael Maginn, Satisfied Customer'
+            author: 'Michael, Satisfied Customer'
         },
         {
             content: 'Thanks so much. I\'m really happy with the paint job and colors.',
-            author: 'Sandy Parrish, Satisfied Customer'
+            author: 'Sandy, Satisfied Customer'
+        },
+        {
+            content: 'Thank you for surpassing all of our expectations! Thank you for the thoroughness and attention to detail, from set up to clean up/',
+            author: 'A Catisfied Customer'
+        },
+        {
+            content: 'Thank you for the great paint job. I love the color and such a nice job!',
+            author: 'Sharon, Satisfied Customer'
+        },
+        {
+            content: 'Thank you! We love the house and garage.',
+            author: 'Cindy and Tammy, Satisfied Customers'
         },
         {
             content: 'Thank you again for getting a very big job done at our house. You were great to work with, and we love the outcome of our newly painted house.',
-            author: 'Mike and Shawn Shafer, VERY Satisfied Customers'
+            author: 'Mike and Shawn, VERY Satisfied Customers'
         }
     ];
 

@@ -55,7 +55,7 @@
                 <h3 class="text-lg font-bold font-mont mb-2">We paint of course!</h3>
                 <ul class="text-base">
                     <li><img src="{brushIcon}" class="inline-block w-6" alt="paintrbush"/> Walls</li>
-                    <li><img src="{brushIcon}" class="inline-block w-6" alt="paintrbush"/> Celings</li>
+                    <li><img src="{brushIcon}" class="inline-block w-6" alt="paintrbush"/> Ceilings</li>
                     <li><img src="{brushIcon}" class="inline-block w-6" alt="paintrbush"/> Wood Trim</li>
                     <li><img src="{brushIcon}" class="inline-block w-6" alt="paintrbush"/> Garages</li>
                     <li><img src="{brushIcon}" class="inline-block w-6" alt="paintrbush"/> Sheds</li>
@@ -81,7 +81,7 @@
                 itemClassName="w-1/2 p-4"
                 containerClassName="max-w-screen-lg"
             >
-                <figure class="relative overflow-hidden aspect-video">
+                <figure class="relative overflow-hidden aspect-video rounded-md">
                     <picture>
                         <source srcset="{item[0]}" />
                         <img src="{item[1]}" alt="Some of our work" />
@@ -92,6 +92,8 @@
                 <h3 class="text-lg font-bold mb-2">And we offer other contracting<br> services</h3>
                 <ul class="text-base">
                     <li><img src="{wrenchIcon}" class="inline-block w-6" alt="wrench"/> Pressure Washing</li>
+                    <li><img src="{wrenchIcon}" class="inline-block w-6" alt="wrench"/> Carpentry</li>
+                    <li><img src="{wrenchIcon}" class="inline-block w-6" alt="wrench"/> Trim Installation</li>
                     <li><img src="{wrenchIcon}" class="inline-block w-6" alt="wrench"/> Wallpaper Removal</li>
                     <li><img src="{wrenchIcon}" class="inline-block w-6" alt="wrench"/> Siding Repair</li>
                     <li><img src="{wrenchIcon}" class="inline-block w-6" alt="wrench"/> Dryrot Repair</li>

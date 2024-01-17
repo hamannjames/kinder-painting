@@ -13,4 +13,6 @@
             Powered by <a href="https://jamaneshamann.me">James Hamann</a>
         </div>
     </div>
+
+    <script type="text/javascript" src="https://form.jotform.com/jsform/240166132150139"></script>
 </footer>
