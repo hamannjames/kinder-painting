@@ -27,7 +27,7 @@
 }}>
     <div class="flex items-center justify-between mx-auto max-w-vw-max gap-4">
         <div class="relative px-4 py-2 logo before:bg-ramie-400">
-            <a href="{base}/">
+            <a href="{base}">
                 <h1 class="cursor-pointer text-white text-center font-mont text-2xl italic font-bold relative shadow-1">KINDER PAINTING</h1>
             </a>
     
@@ -119,7 +119,7 @@
                         Close
                     </button>
                 </li>
-                <li class="text-right"><a href="{base}/">Home</a></li>
+                <li class="text-right"><a href="{base}">Home</a></li>
                 <li class="text-right"><a href="{base}/about-us">About Us</a></li>
                 <li class="text-right">
                     <button class="inline-block" on:click={dispatch}>
