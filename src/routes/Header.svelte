@@ -9,19 +9,15 @@
   import { base } from "$app/paths";
   import JotFormPopup from "./JotFormPopup.svelte";
 
+  console.log(base);
+
   let emailPopup = false;
   let node;
   let mobileMenu = false;
 
-  onMount(() => {
-    const reveal = () => emailPopup = true;
-
-    window.addEventListener('show-email-popup', reveal);
-
-    return () => {
-        window.removeEventListener('show-email-popup', reveal);
+    const dispatch = () => {
+        window.dispatchEvent(new CustomEvent('show-email-popup'));
     }
-  })
 </script>
 
 <header bind:this={node} class="w-full bg-naval-700 px-6 py-4 fixed z-20" in:fly|global={{
@@ -99,12 +95,12 @@
             <ul class="flex text-base text-white items-center gap-4">
                 <li><a href="{base}/about-us">About Us</a></li>
                 <li>
-                    <button class="block" on:click={() => emailPopup = true}>
+                    <button class="block" on:click={dispatch}>
                         <PhoneIcon width={32} height={32} fill="rgb(203 193 163)" />
                     </button>
                 </li>
                 <li>
-                    <button class="block" on:click={() => emailPopup = true}>
+                    <button class="block" on:click={dispatch}>
                         <EmailIcon width={32} height={32} fill="rgb(203 193 163)" />
                     </button>
                 </li>
@@ -118,24 +114,25 @@
         {#if mobileMenu}
         <nav class="lg:hidden fixed p-8 bg-naval-800 z-50 h-screen top-0 right-0" transition:fly={{x: '10vw'}}>
             <ul class="flex flex-col text-base text-white gap-4">
-                <li class="">
+                <li class="text-right mb-2">
                     <button on:click={() => mobileMenu = false} class="text-sm text-right inline">
                         Close
                     </button>
                 </li>
-                <li class="text-right">About Us</li>
+                <li class="text-right"><a href="{base}/">Home</a></li>
+                <li class="text-right"><a href="{base}/about-us">About Us</a></li>
                 <li class="text-right">
-                    <button class="block" on:click={() => emailPopup = true}>
+                    <button class="inline-block" on:click={dispatch}>
                         <PhoneIcon width={32} height={32} fill="rgb(203 193 163)" />
                     </button>
                 </li>
                 <li class="text-right">
-                    <button class="block" on:click={() => emailPopup = true}>
+                    <button class="inline-block" on:click={dispatch}>
                         <EmailIcon width={32} height={32} fill="rgb(203 193 163)" />
                     </button>
                 </li>
-                <li class="text-right"><a href="https://www.facebook.com/p/Kinder-Painting-100054254721438/"><img src={fb_icon} alt="Follow us on Facebook" class="w-8 max-w-max" /></a></li>
-                <li class="text-right"><a href="https://www.instagram.com/kinderpaintingpnw"><img src={igIcon} alt="Follow us on Instagram" class="w-8 max-w-max" /></a></li>
+                <li class="text-right"><a class="inline-block" href="https://www.facebook.com/p/Kinder-Painting-100054254721438/"><img src={fb_icon} alt="Follow us on Facebook" class="w-8 max-w-max" /></a></li>
+                <li class="text-right"><a class="inline-block" href="https://www.instagram.com/kinderpaintingpnw"><img src={igIcon} alt="Follow us on Instagram" class="w-8 max-w-max" /></a></li>
             </ul>
         </nav>
         {/if}
@@ -143,9 +140,7 @@
     <p class="text-center sm:hidden text-base text-white italic mt-2">Serving Longview and Western Washington</p>
 </header>
 
-{#if emailPopup}
-<JotFormPopup close={() => emailPopup = false} />
-{/if}
+<JotFormPopup />
 
 <style>
     .logo {
