@@ -1,9 +1,13 @@
 <script>
     import { fly, slide } from "svelte/transition";
     import white_house_big from "$lib/images/white_house_big.png"
+    import white_house_big_webp from "$lib/images/white_house_big.webp"
     import yellow_house_with_deck_from_front from "$lib/images/yellow_house_with_deck_from_front.png";
+    import yellow_house_with_deck_from_front_webp from "$lib/images/yellow_house_with_deck_from_front.webp";
     import house_with_beams from "$lib/images/house_with_beams.png"
+    import house_with_beams_webp from "$lib/images/house_with_beams.webp"
     import commercial_spray_paint from "$lib/images/commercial_spray_paint.png"
+    import commercial_spray_paint_webp from "$lib/images/commercial_spray_paint.webp"
     import { onMount } from "svelte";
     import Button from "$lib/components/Button.svelte";
     import BrushBg from "$lib/components/BrushBg.svelte";
@@ -18,6 +22,7 @@
   import WhatWeDo from "./WhatWeDo.svelte";
 
     const images = [white_house_big,yellow_house_with_deck_from_front,house_with_beams,commercial_spray_paint]
+    const imagesWebp = [white_house_big_webp, yellow_house_with_deck_from_front_webp, house_with_beams_webp, commercial_spray_paint_webp];
     let image = 0;
 
     onMount(() => {
@@ -34,14 +39,17 @@
 
 <section class="w-full flex bg-icicle-100 px-8 py-12">
     <div class="flex flex-col md:flex-row w-full max-w-vw-max mx-auto gap-4">
-        <div class="md:basis-3/5 relative h-72 md:h-screen hero md:p-2">
+        <div class="md:basis-3/5 relative h-56 md:h-screen hero md:p-2">
             {#key image}
                 <figure class="w-full absolute overflow-hidden h-full rounded-md"
                     transition:fly={{
                         x: '-50vw'
                     }}
                 >
-                    <img src="{images[image]}" alt="painting" class="absolute top-1/2 left-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 h-full" style="max-width: inherit" />
+                    <picture>
+                        <source srcset="{imagesWebp[image]}" />
+                        <img src="{images[image]}" alt="painting" class="absolute top-1/2 left-1/2 min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 h-full" style="max-width: inherit" />
+                    </picture>
                 </figure>
             {/key}
         </div>
