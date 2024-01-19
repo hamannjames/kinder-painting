@@ -5,6 +5,29 @@
     import { onMount } from "svelte";
     import { backIn, backOut, circIn, cubicIn, cubicOut } from "svelte/easing";
     import Footer from "./Footer.svelte";
+    import {MetaTags} from 'svelte-meta-tags';
+    import {page} from '$app/stores';
+    import { get } from "svelte/store";
+    import { base } from "$app/paths";
+    import og_image from "$lib/images/white_house_big_og.png";
+
+    export let data;
+
+    console.log($page);
+
+    $: metaTags = {
+        titleTemplate: '%s - Kinder Painting',
+        description: 'Serving Longview and Western Washington for all your painting and contracting needs.',
+        canonical: `${$page.url.href}`,
+        ...$page.data.metaTagsChild,
+        openGraph: {
+            url: `${$page.url.href}`,
+            locale: 'en-US',
+            siteName: 'Kinder Painting',
+            images: [{url: $page.url.origin + og_image, width: 1200, height: 630, alt: 'Kinder Painting'}],
+            ...$page.data.metaTagsChild.openGraph
+        }
+    }
 
     let timeout = false;
     let loaded = true;
@@ -157,6 +180,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,400;0,6..12,700;1,6..12,200;1,6..12,400;1,6..12,700&display=swap" rel="stylesheet">
 </svelte:head>
+
+<MetaTags {...metaTags} />
 
 {#if !loaded && timeout}
 <div class="app h-screen w-screen flex absolute z-10">
