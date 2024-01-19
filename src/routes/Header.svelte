@@ -95,9 +95,9 @@
             <ul class="flex text-base text-white items-center gap-4">
                 <li><a href="{base}/about-us/">About Us</a></li>
                 <li>
-                    <button class="block" on:click={dispatch}>
+                    <a class="block" href="tel:(360)430-4604">
                         <PhoneIcon width={32} height={32} fill="rgb(203 193 163)" />
-                    </button>
+                    </a>
                 </li>
                 <li>
                     <button class="block" on:click={dispatch}>
@@ -122,9 +122,9 @@
                 <li class="text-right"><a href="{base}/">Home</a></li>
                 <li class="text-right"><a href="{base}/about-us/">About Us</a></li>
                 <li class="text-right">
-                    <button class="inline-block" on:click={dispatch}>
+                    <a class="inline-block" href="tel:(360)430-4604">
                         <PhoneIcon width={32} height={32} fill="rgb(203 193 163)" />
-                    </button>
+                    </a>
                 </li>
                 <li class="text-right">
                     <button class="inline-block" on:click={dispatch}>
