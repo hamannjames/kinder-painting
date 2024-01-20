@@ -10,10 +10,7 @@ const config = {
 		adapter: adapter({
 			pages: 'docs',
 			assets: 'docs'
-		}),
-		paths: {
-			base: process.argv.includes('dev') ? '' : '/kinder-painting'
-		}
+		})
 	},
     preprocess: vitePreprocess()
 };
