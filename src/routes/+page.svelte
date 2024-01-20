@@ -66,6 +66,12 @@
     <p class="text-2xl max-w-vw-limit mx-auto text-left md:text-center">
         Kinder Painting has been serving Western Washington for over 20 years, providing unparalleled customer service.
     </p>
+
+    <div class="inline-block">
+        <BrushBg>
+            <p class="py-2 px-4 k text-white text-center font-mont text-8xl italic font-bold relative shadow-1">K</p>
+        </BrushBg>
+    </div>
 </section>
 
 <BrushSeparator />
@@ -83,6 +89,10 @@
         to {transform: translate(-10px, -5px)}
     }
     */
+
+    .k {
+        text-shadow: 1px 1px 2px #000;
+    }
 
     @keyframes grow {
         from {transform: scale(1)}
