@@ -10,8 +10,6 @@
     import { get } from "svelte/store";
     import { base } from "$app/paths";
     import og_image from "$lib/images/white_house_big_og.png";
-    import kp_icon from "$lib/images/kinder_painting_icon.png";
-    import kp_icon_ico from "$lib/images/kinder_painting_icon.ico";
 
     export let data;
 
@@ -26,20 +24,9 @@
             url: `${$page.url.href}`,
             locale: 'en-US',
             siteName: 'Kinder Painting',
-            images: [{url: $page.url.origin + og_image, width: 1200, height: 630, alt: 'Kinder Painting'}],
+            images: [{url: og_image, width: 1200, height: 630, alt: 'Kinder Painting'}],
             ...$page.data.metaTagsChild.openGraph
-        },
-        additionalLinkTags: [
-            {
-                rel: 'icon',
-                href: $page.url.origin + kp_icon_ico
-            },
-            {
-                rel: 'apple-touch-icon',
-                href: $page.url.origin + kp_icon,
-                sizes: '76x76'
-            },
-        ]
+        }
     }
 
     let timeout = false;
