@@ -2,6 +2,11 @@
     import GetAQuoteSection from "../GetAQuoteSection.svelte";
     import headshot from "$lib/images/headshot.jpg";
 </script>
+
+<svelte:head>
+    <title>About Us - Kinder Painting</title>
+</svelte:head>
+
 <section class="px-8 py-12 text-base space-y-6 max-w-vw-limit mx-auto">
     <p class="text-2xl max-w-vw-limit mx-auto text-left md:text-center">
         Hello and thank you for visiting my website.
@@ -10,7 +15,7 @@
         <img src="{headshot}" alt="Ken and Becky Kinder" />
         <figcaption class="text-sm italic">My lovely wife Becky and I</figcaption>
     </figure>
-    <p class="">Let me tell you a little about our company. My name is Ken Kinder. My wife Becky and I started this business 20 years ago and are still going strong. Through the years we’ve seen a lot of changes, but one thing that hasn’t changed is our commitment to quality service and craftsmanship.</p>
+    <p class="">Let me tell you a little about our company. My name is Ken Kinder. My wife Becky and I started this business over 25 years ago and are still going strong. Through the years we’ve seen a lot of changes, but one thing that hasn’t changed is our commitment to quality service and craftsmanship.</p>
     
     <p>Thorough preparation is essential to doing any job properly. Quality materials are important to achieve a long lasting paint job. You want to hire somebody who has the experience and the expertise to handle any problem that may arise when tackling your interior or exterior paint job. Kinder Painting is fully equipped to handle all your commercial and residential painting needs. We have built a reputation for quality workmanship and honest value. Most of our business comes from repeat customers and referrals from satisfied customers. When you call for a free, no-obligation, quote for your project you’ll receive a detailed and concise cost breakdown as well as product and procedural recommendations based on your needs and budget.</p>
     

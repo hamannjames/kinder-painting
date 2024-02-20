@@ -37,6 +37,10 @@
     
 </script>
 
+<svelte:head>
+    <title>Home - Kinder Painting</title>
+</svelte:head>
+
 <section class="w-full flex bg-icicle-100 px-8 py-12">
     <div class="flex flex-col md:flex-row w-full max-w-vw-max mx-auto gap-4">
         <div class="md:basis-3/5 relative h-56 md:h-screen hero md:p-2">
